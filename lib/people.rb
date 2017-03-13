@@ -9,6 +9,7 @@ module People
     def initialize( opts={} )
 
       @name_chars = "A-Za-zäöüÄÖÜßéèáÁàÀôÔ0-9\\-\\'"
+      @standard_chars = "A-Za-zäöüÄÖÜßéèáÁàÀôÔ"
       @nc = @name_chars
 
       @opts = {
@@ -348,7 +349,7 @@ module People
       parsed = false
 
       # M ERICSON
-      if name.match( /^([A-Za-z])\.? (#{last_name_p})$/i )
+      if name.match( /^([#{@standard_chars}])\.? (#{last_name_p})$/i )
         first  = $1;
         middle = '';
         last   = $2;
@@ -356,7 +357,7 @@ module People
         parse_type = 1;
 
         # M E ERICSON
-      elsif name.match( /^([A-Za-z])\.? ([A-Za-z])\.? (#{last_name_p})$/i )
+      elsif name.match( /^([#{@standard_chars}])\.? ([A-Za-z])\.? (#{last_name_p})$/i )
         first  = $1;
         middle = $2;
         last   = $3;
@@ -364,7 +365,7 @@ module People
         parse_type = 2;
 
         # M.E. ERICSON
-      elsif name.match( /^([A-Za-z])\.([A-Za-z])\. (#{last_name_p})$/i )
+      elsif name.match( /^([#{@standard_chars}])\.([#{@standard_chars}])\. (#{last_name_p})$/i )
         first  = $1;
         middle = $2;
         last   = $3;
@@ -372,7 +373,7 @@ module People
         parse_type = 3;
 
         # M E E ERICSON
-      elsif name.match( /^([A-Za-z])\.? ([A-Za-z])\.? ([A-Za-z])\.? (#{last_name_p})$/i )
+      elsif name.match( /^([#{@standard_chars}])\.? ([#{@standard_chars}])\.? ([#{@standard_chars}])\.? (#{last_name_p})$/i )
         first  = $1;
         middle = $2 + ' ' + $3;
         last   = $4;
@@ -380,7 +381,7 @@ module People
         parse_type = 4;
 
         # M EDWARD ERICSON
-      elsif name.match( /^([A-Za-z])\.? ([#{@nc}]+) (#{last_name_p})$/i )
+      elsif name.match( /^([#{@standard_chars}])\.? ([#{@nc}]+) (#{last_name_p})$/i )
         first  = $1;
         middle = $2;
         last   = $3;
@@ -388,7 +389,7 @@ module People
         parse_type = 5;
 
         # MATTHEW E ERICSON
-      elsif name.match( /^([#{@nc}]+) ([A-Za-z])\.? (#{last_name_p})$/i )
+      elsif name.match( /^([#{@nc}]+) ([#{@standard_chars}])\.? (#{last_name_p})$/i )
         first  = $1;
         middle = $2;
         last   = $3;
@@ -396,7 +397,7 @@ module People
         parse_type = 6;
 
         # MATTHEW E E ERICSON
-      elsif name.match( /^([#{@nc}]+) ([A-Za-z])\.? ([A-Za-z])\.? (#{last_name_p})$/i )
+      elsif name.match( /^([#{@nc}]+) ([#{@standard_chars}])\.? ([#{@standard_chars}])\.? (#{last_name_p})$/i )
         first  = $1;
         middle = $2 + ' ' + $3;
         last   = $4;
@@ -404,7 +405,7 @@ module People
         parse_type = 7;
 
         # MATTHEW E.E. ERICSON
-      elsif name.match( /^([#{@nc}]+) ([A-Za-z]\.[A-Za-z]\.) (#{last_name_p})$/i )
+      elsif name.match( /^([#{@nc}]+) ([#{@standard_chars}]\.[#{@standard_chars}]\.) (#{last_name_p})$/i )
         first  = $1;
         middle = $2;
         last   = $3;
@@ -428,7 +429,7 @@ module People
         parse_type = 10;
 
         # MATTHEW E. SHEIE ERICSON
-      elsif name.match( /^([#{@nc}]+) ([A-Za-z])\.? ($multNamePat)$/i )
+      elsif name.match( /^([#{@nc}]+) ([#{@standard_chars}])\.? ($multNamePat)$/i )
         first  = $1;
         middle = $2;
         last   = $3;
