@@ -8,7 +8,7 @@ module People
     # Creates a name parsing object
     def initialize( opts={} )
 
-      @name_chars = "A-Za-z0-9\\-\\'"
+      @name_chars = "A-Za-zäöüÄÖÜßéèáÁàÀôÔ0-9\\-\\'"
       @nc = @name_chars
 
       @opts = {
@@ -496,4 +496,3 @@ module People
 
 
 end
-
