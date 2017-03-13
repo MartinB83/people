@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{people}
-  s.version = "0.3.0"
+  s.version = '0.3.0'
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matthew Ericson"]
@@ -36,6 +36,8 @@ Gem::Specification.new do |s|
     "test/people_test.rb",
      "test/test_helper.rb"
   ]
+
+  s.add_development_dependency 'byebug'
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
