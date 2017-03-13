@@ -292,7 +292,7 @@ module People
     def clean( s )
 
       # remove illegal characters
-      s.gsub!( /[^A-Za-z0-9\-\'\.&\/ \,]/, "" )
+      s.gsub!( /[^A-Za-z0-9äöüÄÖÜßéèáÁàÀôÔ\-\'\.&\/ \,]/, "" )
       # remove repeating spaces
       s.gsub!( /  +/, " " )
       s.gsub!( /\s+/, " " )
